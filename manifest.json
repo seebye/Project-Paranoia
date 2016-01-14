@@ -1,0 +1,41 @@
+{
+	"background": {
+		"scripts":
+		[
+			"js/shared/utils.js"
+			, "js/shared/constants.js"
+			, "js/background/constants.js"
+			, "js/background/utils.js"
+			, "js/background/useragent.js"
+			, "js/background/page.js"
+			, "js/background/pagemanager.js"
+			, "js/background/urlparameters.js"
+			, "js/background/main.js"
+		]
+	}
+	, "content_scripts":
+	[{
+		"run_at": "document_start",
+		"matches": ["http://*/*", "https://*/*"],
+		"js":
+		[
+			"js/shared/utils.js"
+			, "js/shared/constants.js"
+			, "js/content/utils.js"
+			, "js/content/main.js"
+		],
+		"all_frames": true
+	}]
+	, "permissions":
+	[
+		"cookies", "tabs", "<all_urls>", "webRequest", "webRequestBlocking", "browsingData", "storage"
+	]
+	, "web_accessible_resources" :
+	[
+		"js/shared/utils.js"
+		, "js/injection/*"
+	]
+	, "manifest_version": 2
+	, "version": "1.0"
+	, "name": "Project Paranoia"
+}
